@@ -1,21 +1,16 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const productItemView = (product) =>
+  <li style={{ padding: '30px', listStyle: 'none', border: '1px solid #000', margin: '5px' }}>
+    <b>{product}</b> <br />
+    $ {(Math.random() * 100).toFixed(2)} <br />
+    <button>Buy</button>
+  </li>;
 
-export default App;
+export default () =>
+  <section>
+    <h2>Products</h2>
+    <ul style={{ display: 'flex', padding: '0' }}>
+      { ['Rice', 'Beans', 'Fries', 'Steak'].map(productItemView) }
+    </ul>
+  </section>;
