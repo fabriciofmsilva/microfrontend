@@ -2,7 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('header-root'));
-registerServiceWorker();
+class Header extends HTMLElement {
+  attachedCallback() {
+    ReactDOM.render(<App />, this.createShadowRoot());
+  }
+}
+
+document.registerElement('microfrontends-header', Header);

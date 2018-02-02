@@ -2,7 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('cart-root'));
-registerServiceWorker();
+class Cart extends HTMLElement {
+  attachedCallback() {
+    ReactDOM.render(<App />, this.createShadowRoot());
+  }
+}
+
+document.registerElement('microfrontends-cart', Cart);
